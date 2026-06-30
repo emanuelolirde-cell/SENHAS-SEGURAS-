@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #e0e5ec;
+    color: #37474f;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Container Principal Neumórfico */
+.neu-container {
+    background-color: #e0e5ec;
+    border-radius: 40px;
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+    box-shadow: 10px 10px 20px #a3b1c6,
+               -10px -10px 20px #ffffff;
+}
+
+.neu-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.neu-header h1 {
+    font-size: 1.8rem;
+    color: #263238;
+}
+
+.neu-header h1 .v8 {
+    font-size: 0.9rem;
+    color: #78909c;
+    vertical-align: super;
+}
+
+.neu-header p {
+    font-size: 0.85rem;
+    color: #607d8b;
+    margin-top: 5px;
+}
+
+/* Visor Côncavo (Afundado) */
+.neu-visor {
+    background-color: #e0e5ec;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 30px;
+    box-shadow: inset 4px 4px 8px #a3b1c6,
+                inset -4px -4px 8px #ffffff;
+}
+
+.neu-visor input {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #263238;
+    outline: none;
+    letter-spacing: 1px;
+}
+
+/* Grid de Controles */
+.neu-controles-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.neu-bloco {
+    background-color: #e0e5ec;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 6px 6px 12px #a3b1c6,
+               -6px -6px 12px #ffffff;
+}
+
+.neu-bloco h3 {
+    font-size: 0.95rem;
+    color: #546e7a;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Bloco do Comprimento */
+.neu-contador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#neu-valor-tamanho {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #263238;
+    min-width: 30px;
+    text-align: center;
+}
+
+.btn-neu-redondo {
+    background-color: #e0e5ec;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    color: #37474f;
+    cursor: pointer;
+    box-shadow: 4px 4px 8px #a3b1c6,
+               -4px -4px 8px #ffffff;
+    transition: all 0.2s ease;
+}
+
+.btn-neu-redondo:active {
+    box-shadow: inset 2px 2px 5px #a3b1c6,
+                inset -2px -2px 5px #ffffff;
+}
+
+/* Bloco das Opções - Grid */
+.neu-checks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+/* Interruptor Neumórfico (Slider/Switch) */
+.switch-neu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #37474f;
+    cursor: pointer;
+    gap: 10px;
+}
+
+.switch-neu input {
+    display: none;
+}
+
+.slider-neu {
+    width: 40px;
+    height: 20px;
+    background-color: #e0e5ec;
+    border-radius: 20px;
+    box-shadow: 4px 4px 8px #a3b1c6,
+               -4px -4px 8px #ffffff;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.slider-neu:after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    top: 2px;
+    left: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 1px 1px 3px #a3b1c6;
+}
+
+.switch-neu input:checked + .slider-neu {
+    background-color: #4c51bf; /* Cor quando ativado */
+    box-shadow: inset 2px 2px 5px #2d3748;
+}
+
+.switch-neu input:checked + .slider-neu:after {
+    transform: translateX(20px);
+    background-color: #e0e5ec;
+}
+
+/* Painel de Status Côncavo (Afundado) */
+.neu-status-painel {
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    text-align: center;
+    line-height: 1.4;
+    box-shadow: inset 3px 3px 6px #a3b1c6,
+                inset -3px -3px 6px #ffffff;
+}
+
+/* Classes dinâmicas de feedback de cor */
+.st-fraco { color: #e53e3e; }
+.st-medio { color: #dd6b20; }
+.st-forte { color: #38a169; }
