@@ -1,0 +1,101 @@
+// Capturando elementos da interface Neumórfica
+const visorSenha = document.getElementById('senha-final');
+const valorTamanho = document.getElementById('neu-valor-tamanho');
+const btnSubtrair = document.getElementById('neu-subtrair');
+const btnAdicionar = document.getElementById('neu-adicionar');
+
+const checkMai = document.getElementById('check-mai');
+const checkMin = document.getElementById('check-min');
+const checkNum = document.getElementById('check-num');
+const checkSim = document.getElementById('check-sim');
+
+const statusContainer = document.getElementById('status-container');
+const statusMensagem = document.getElementById('status-mensagem');
+
+// Bibliotecas de códigos binários
+const codigos = {
+    mai: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    min: 'abcdefghijklmnopqrstuvwxyz',
+    num: '0123456789',
+    sim: '!@#$%¨&*()_+-=[]{}'
+};
+
+let comprimentoAtual = 14;
+
+// Ouvintes para botões de ação tátil (+ / -)
+btnSubtrair.addEventListener('click', () => {
+    if (comprimentoAtual > 6) {
+        comprimentoAtual--;
+        processarCriptografia();
+    }
+});
+
+btnAdicionar.addEventListener('click', () => {
+    if (comprimentoAtual < 32) {
+        comprimentoAtual++;
+        processarCriptografia();
+    }
+});
+
+// Vincula atualização aos sliders Neumórficos
+[checkMai, checkMin, checkNum, checkSim].forEach(slider => {
+    slider.addEventListener('change', processarCriptografia);
+});
+
+// Função centralizadora de processamento
+function processarCriptografia() {
+    valorTamanho.textContent = comprimentoAtual;
+   
+    let poolCaracteres = '';
+    let filtrosContados = 0;
+
+    if (checkMai.checked) { poolCaracteres += codigos.mai; filtrosContados++; }
+    if (checkMin.checked) { poolCaracteres += codigos.min; filtrosContados++; }
+    if (checkNum.checked) { poolCaracteres += codigos.num; filtrosContados++; }
+    if (checkSim.checked) { poolCaracteres += codigos.sim; filtrosContados++; }
+
+    if (!poolCaracteres) {
+        visorSenha.value = '';
+        statusContainer.className = 'neu-status-painel';
+        statusMensagem.textContent = 'Erro: Ative pelo menos um parâmetro de caracteres.';
+        return;
+    }
+
+    // Algoritmo de sorteio posicional
+    let senhaPronta = '';
+    for (let i = 0; i < comprimentoAtual; i++) {
+        const hashIndex = Math.floor(Math.random() * poolCaracteres.length);
+        senhaPronta += poolCaracteres.charAt(hashIndex);
+    }
+
+    visorSenha.value = senhaPronta;
+    avaliarMaturidadeDaChave(comprimentoAtual, filtrosContados);
+}
+
+// Analisador matemático de entropia tátil
+function avaliarMaturidadeDaChave(tamanho, filtros) {
+    statusContainer.className = 'neu-status-painel'; // Reseta as classes de status
+   
+    let fatorEntropia = tamanho * filtros;
+
+    if (fatorEntropia < 20 || tamanho < 8) {
+        statusContainer.classList.add('st-fraco');
+    } else if (fatorEntropia >= 20 && fatorEntropia < 40) {
+        statusContainer.classList.add('st-medio');
+    } else {
+        statusContainer.classList.add('st-forte');
+    }
+
+    // Cálculo matemático representativo para estimativa de cracking
+    let combinacoes = Math.pow(filtros * 14, tamanho);
+    let estimativaDias = Math.floor(combinacoes / 2000000000);
+
+    if (estimativaDias <= 0) {
+        statusMensagem.textContent = 'Matriz Crítica. Proteção contra bruteforce inferior a 24 horas.';
+    } else {
+        statusMensagem.textContent = `Matriz Estável. Estimativa de ${estimativaDias.toLocaleString('pt-BR')} dias para quebra de segurança tátil.`;
+    }
+}
+
+// Inicializa o gerador assim que o Kernel carregar
+processarCriptografia();
