@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Chaves Neumórfico v8</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="neu-container">
+        <header class="neu-header">
+            <h1>CriptoKey <span class="v8">v8</span></h1>
+            <p>Sua chave de segurança tátil</p>
+        </header>
+
+        <main class="neu-content">
+            <div class="neu-visor">
+                <input type="text" id="senha-final" readonly value="..." placeholder="Sua senha surgirá aqui">
+            </div>
+
+            <div class="neu-controles-grid">
+                <div class="neu-bloco neu-comprimento">
+                    <h3>Comprimento</h3>
+                    <div class="neu-contador">
+                        <button id="neu-subtrair" class="btn-neu-redondo">-</button>
+                        <span id="neu-valor-tamanho">14</span>
+                        <button id="neu-adicionar" class="btn-neu-redondo">+</button>
+                    </div>
+                </div>
+
+                <div class="neu-bloco neu-opcoes">
+                    <h3>Parâmetros</h3>
+                    <div class="neu-checks-grid">
+                        <label class="switch-neu">
+                            <input type="checkbox" id="check-mai" checked>
+                            <span class="slider-neu"></span>
+                            A-Z
+                        </label>
+                        <label class="switch-neu">
+                            <input type="checkbox" id="check-min" checked>
+                            <span class="slider-neu"></span>
+                            a-z
+                        </label>
+                        <label class="switch-neu">
+                            <input type="checkbox" id="check-num">
+                            <span class="slider-neu"></span>
+                            0-9
+                        </label>
+                        <label class="switch-neu">
+                            <input type="checkbox" id="check-sim">
+                            <span class="slider-neu"></span>
+                            #$&
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="neu-status-painel" id="status-container">
+                <p id="status-mensagem">Configure sua chave de segurança...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
